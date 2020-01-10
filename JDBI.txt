@@ -1,0 +1,1 @@
+mvn archetype:generate -DgroupId=com.hexaware.mlp173 -DartifactId=JdbiDemjo -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
