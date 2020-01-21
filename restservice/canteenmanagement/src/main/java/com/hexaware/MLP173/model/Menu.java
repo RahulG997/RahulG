@@ -142,8 +142,12 @@ public class Menu {
       /**
        * @param argFoodName gets the food Name.
        */
-  public final void setFoodName(final int argFoodName) {
-    this.foodId = argFoodName;
+  public final void setFoodName(final String argFoodName) {
+    this.foodName = argFoodName;
+  }
+  @Override
+  public final String toString() {
+    return String.format("%-15s %-25s %-15s %-15s %-15s %-15s", foodId, foodName, foodPrice, foodStatus, foodDetail, foodRating);
   }
 }
 

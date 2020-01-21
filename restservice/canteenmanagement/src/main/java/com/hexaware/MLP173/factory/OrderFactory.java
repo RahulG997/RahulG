@@ -74,22 +74,36 @@ public class OrderFactory {
    /**
    * Show Vendor Orders History.
    * @param orderId for accept or reject.
-   * @param custId for accept or reject.
+   * @param cusId for accept or reject.
    * @param status for changing status.
    * @return the array of order object.
    */
-  public static String cancelOrder(final int orderId, final int custId, final String status) {
+  public static String cancelOrder(final int orderId, final int cusId, final String status) {
     OrderDetail orderdetail = dao().findByOrderId(orderId);
+    int customerId = orderdetail.getCusId();
+    OrderStatus ordStatus = orderdetail.getOrdStatus();
     String result = "";
     if (orderdetail != null) {
-      if (status.equals("YES")) {
-        String st = "CANCELLED";
-        dao().acceptOrReject(st, orderId);
-        double billAmount = orderdetail.getOrdAmount();
-        String type = orderdetail.getWalType();
-        billAmount = billAmount - (billAmount / 10);
-        dao().refundAmount(billAmount, type, custId);
-        result = "Order Cancelled Successfully...";
+      if (ordStatus == OrderStatus.PENDING) {
+        if (cusId == orderdetail.getCusId()) {
+          if (customerId == cusId) {
+            if (status.equals("YES")) {
+              String st = "CANCELLED";
+              dao().acceptOrReject(st, orderId);
+              double billAmount = orderdetail.getOrdAmount();
+              String type = orderdetail.getWalType();
+              billAmount = billAmount - (billAmount / 10);
+              dao().refundAmount(billAmount, type, cusId);
+              result = "Order Cancelled Successfully...";
+            }
+          } else {
+            result = "You are Unauthorized to cancel this order ...";
+          }
+        } else {
+          result = "You are Unauthorized Customer";
+        }
+      } else {
+        result = "You cannot cancel this order..";
       }
     } else {
       result = "Invalid OrderId...";

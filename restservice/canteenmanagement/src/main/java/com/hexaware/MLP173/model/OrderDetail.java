@@ -239,7 +239,7 @@ public class OrderDetail {
   }
   @Override
   public final String toString() {
-    return String.format("%5s %10s %5s %10s %10s %10s %10s %10s %10s", ordId, ordTime, ordAmount, ordStatus, qtyOrder,
+    return String.format("%-15s %-15s %-15s %-18s %-15s %-15s %-15s %-15s %-15s", ordId, ordTime, ordAmount, ordStatus, qtyOrder,
         cusId, foodId, venId, walType);
   }
 }

@@ -165,8 +165,14 @@ class CliMain {
     Console console = System.console();
     char[] pwd = console.readPassword("Enter password ");
     password = String.valueOf(pwd);
+    System.out.println("----------------------------------------------------"
+          + "----------------------------------------------");
+    System.out.printf("%-15s %-20s %-20s %-15s %-15s", "Vendor Id", "Vendor Name",
+        "Vendor E-mail", "Vendor Mobile", " Vendor Address");
+    System.out.println();
+    System.out.println("----------------------------------------------------"
+          + "----------------------------------------------");
     int count = VendorFactory.validateVendor(user, password);
-    System.out.println(count);
     if (count == 1) {
       Vendor vendorFound = VendorFactory.findByVendorName(user);
       System.out.println(vendorFound);
@@ -318,20 +324,32 @@ class CliMain {
  */
   private void showFullMenu() {
     Menu[] menu = MenuFactory.showMenu();
-    System.out.println("MEN_ID    MEN_NAME     MEN_DETAILS   MEN_PRICE    MEN_STATUS     MEN_RATING  ");
-    for (Menu m : menu) {
-      System.out.println(m.getFoodId() + "  " + m.getFoodName() + "  "
-          + m.getFoodDetail() + "  " + m.getFoodPrice() + "  " + m.getFoodStatus() + "  "
-          + m.getFoodRating());
+    System.out.println("----------------------------------------------------------"
+            + "----------------------------------------------------");
+    System.out.printf("%-15s %-25s %-15s %-15s %-15s %-15s", "Food id",
+            "Food Name", "Food Price", "Food Status", "Food Detail", "Food Rating");
+    System.out.println();
+    System.out.println("----------------------------------------------------------"
+            + "----------------------------------------------");
+    for (Menu food : menu) {
+      System.out.println(food);
+      System.out.println();
     }
   }
   private void showFullOrder() {
     OrderDetail[] orderdetail = OrderFactory.showOrderDetail();
-    System.out.println("ORD_ID    ORD_TIME     ORD_AMOUNT       ORD_STATUS     ORD_QUANTITY     ORD_LOCATION     CUS_ID    MEN_ID     VEN_ID");
-    for (OrderDetail m : orderdetail) {
-      System.out.println(m.getOrdId() + "    " + m.getOrdTime() + "    " + m.getOrdAmount() + "    "
-          + m.getOrdLocation() + "    " + m.getOrdStatus() + "    " + m.getQtyOrder() + "    "
-          + m.getCusId() + "    " + m.getVenId() + "    " + m.getFoodId() + "    " + m.getWalType());
+    System.out.println("-------------------------------------------------------------------"
+        + "----------------------------------------------------"
+        + "---------------------------");
+    System.out.printf("%-15s %-15s %-15s %-15s %-15s %-15s %-15s %-15s %-15s", "Order id", "Order Time", "Order Amount",
+            "Order Status", "Order Quantity", "Customer Id", "Food ID", "Vendor ID", "Wallet Type");
+    System.out.println();
+    System.out.println("----------------------------------------------------------"
+            + "-------------------------------------------------------------"
+            + "---------------------------");
+    for (OrderDetail orderdetail2 : orderdetail) {
+      System.out.println(orderdetail2);
+      System.out.println();
     }
   }
 /**

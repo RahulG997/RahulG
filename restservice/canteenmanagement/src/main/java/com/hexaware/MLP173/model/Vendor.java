@@ -151,7 +151,7 @@ public class Vendor {
   */
   @Override
   public final String toString() {
-    return String.format("%5s %15s %25s %20s %20s", venId, venName, venEmail, venMobile, venAddress);
+    return String.format("%16s %15s %25s %20s %20s", venId, venName, venEmail, venMobile, venAddress);
   }
 }
 
