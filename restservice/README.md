@@ -1,1 +1,0 @@
-This directory contains Canteen Management System application.
