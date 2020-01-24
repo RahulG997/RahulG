@@ -1,20 +1,22 @@
 package com.hexaware.MLP173.model;
 
-import com.hexaware.MLP173.persistence.MenuDAO;
-import com.hexaware.MLP173.factory.MenuFactory;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import com.hexaware.MLP173.factory.MenuFactory;
+//import com.hexaware.MLP173.model.Menu;
+import com.hexaware.MLP173.persistence.MenuDAO;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.runner.RunWith;
-
 import mockit.Expectations;
-import mockit.MockUp;
-import mockit.Mocked;
 import mockit.Mock;
-import mockit.integration.junit4.JMockit;
+import mockit.Mocked;
 import java.util.ArrayList;
+import mockit.MockUp;
+import mockit.integration.junit4.JMockit;
+//import static org.junit.Assert.assertTrue;
 
 /**
  * Test class for Menu.
@@ -34,20 +36,29 @@ public class MenuTest {
   @Test
   public final void testMenu() {
     Menu m = new Menu();
-    Menu m100 = new Menu(100);
-    Menu m101 = new Menu(101);
-    assertNotEquals(m100, null);
-    assertNotEquals(m101, null);
-    assertEquals(m100.getFoodId(),
-        new Menu(100).getFoodId());
-    m101.setFoodId(100);
-    assertNotEquals(m101, new Menu(101));
-    assertEquals(m100.hashCode(),
-        new Menu(100).hashCode());
-    assertEquals(m100, new Menu(100));
+    assertNotNull(m);
+    Menu menu = new Menu(1, "Dosa", "South-Indian", 120.00, FoodStatus.AVAILABLE, "4.0");
+    assertEquals(1, menu.getFoodId());
+    assertEquals("Dosa", menu.getFoodName());
+    assertEquals("South-Indian", menu.getFoodDetail());
+    assertEquals(120, menu.getFoodPrice(), 0);
+    assertEquals(FoodStatus.AVAILABLE, menu.getFoodStatus());
+    assertEquals("4.0", menu.getFoodRating());
+    m.setFoodId(1);
+    m.setFoodName("Dosa");
+    m.setFoodDetail("South-Indian");
+    m.setFoodPrice(120);
+    m.setFoodStatus(FoodStatus.AVAILABLE);
+    m.setFoodRating("4.0");
+    assertEquals(1, menu.getFoodId());
+    assertEquals("Dosa", menu.getFoodName());
+    assertEquals("South-Indian", menu.getFoodDetail());
+    assertEquals(120, menu.getFoodPrice(), 0);
+    assertEquals(FoodStatus.AVAILABLE, menu.getFoodStatus());
+    assertEquals("4.0", menu.getFoodRating());
   }
   /**
-   * tests that empty employee list is handled correctly.
+   * tests that empty menu list is handled correctly.
    * @param dao mocking the dao class
    */
   @Test
@@ -72,14 +83,15 @@ public class MenuTest {
    */
   @Test
   public final void testListAllSome(@Mocked final MenuDAO dao) {
-    final Menu m100 = new Menu(100);
-    final Menu m101 = new Menu(101);
+    final Menu m100 = new Menu(1, "Dosa", "South-Indian", 120.00, FoodStatus.AVAILABLE, "4.0");
+    final Menu m101 = new Menu(2, "Biryani", "North-Indian", 220.00, FoodStatus.NOTAVAILABLE, "4.5");
     final ArrayList<Menu> mn = new ArrayList<Menu>();
     new Expectations() {
       {
         mn.add(m100);
         mn.add(m101);
-        dao.show(); result = mn;
+        dao.show();
+        result = mn;
       }
     };
     new MockUp<MenuFactory>() {
@@ -90,9 +102,7 @@ public class MenuTest {
     };
     Menu[] mn1 = MenuFactory.showMenu();
     assertEquals(2, mn1.length);
-    assertEquals(new Menu(100).getFoodId(),
-        mn1[0].getFoodId());
-    assertEquals(new Menu(101).getFoodId(),
-        mn1[1].getFoodId());
+    assertEquals(1, mn1[0].getFoodId());
+    assertEquals(2, mn1[1].getFoodId());
   }
 }
