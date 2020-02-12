@@ -1,0 +1,85 @@
+<br>
+<div style="text-align:center">
+<h1>
+
+Canteen Management System
+</h1>
+
+<button class="btn btn-default" > Vendor Admin Login </button>
+
+</div>
+<br>
+<br>
+<br>
+
+<div class = "bg">
+
+<table border="1" align ="center">
+
+<thead>
+
+<tr>
+
+<th>Food ID</th>
+
+<th>Food Name</th>
+
+<th>Price</th>
+
+<th>Food Detail</th>
+
+<th>Vendor Id</th>
+
+<th>Add to Cart</th>
+</tr>
+
+</thead>
+<tbody>
+  <tr *ngFor='let menu of menus'>
+   
+    <td>
+      <h5>{{menu.foodId}}</h5>
+    </td>
+    <td>
+      <h5>
+        {{menu.foodName}}
+      </h5>
+    </td>
+    <td>
+      <h5>
+        {{menu.foodPrice}}
+      </h5>
+    </td>
+    <td>
+      <h5>
+        {{menu.foodDetail}}
+      </h5>
+    </td>
+    <td>
+      <h5>
+        {{menu.foodStatus}}
+      </h5>
+    </td>
+    <td>
+      <h5>
+        {{menu.foodRating}}
+      </h5>
+    </td>
+    <td>        
+      
+        <button class="btn btn-default"> Place Order</button>
+      
+          </td>
+          
+    
+    
+  </tr>
+  <tr *ngIf="!menus || menus.length==0">
+    <td colspan="5">
+      No Menu items to display
+    </td>
+  </tr>
+</tbody>
+</table>
+
+</div>

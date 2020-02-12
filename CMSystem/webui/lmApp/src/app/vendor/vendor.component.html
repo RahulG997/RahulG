@@ -1,0 +1,17 @@
+<table border="3">
+  <tr>
+      <th>Vendor ID</th>
+      <th>Vendor Name</th>
+      <th>Vendor Email</th>
+      <th>Vendor Mobile</th>
+      <th>Vendor Address</th>
+  </tr>
+  <tr *ngFor="let u of vendor | async">
+      <td>{{u.venId}}</td>
+      <td>{{u.venName}}</td>
+      <td>{{u.venEmail}}</td>
+      <td>{{u.venMobile}}</td>
+      <td>{{u.venADD}}</td>
+  </tr>
+</table>
+<br/><br/>

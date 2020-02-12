@@ -1,0 +1,27 @@
+Welcome {{userName}} 
+
+<!-- <app-customer-info></app-customer-info> 
+<hr/>
+<br/> 
+<app-customer-order-history></app-customer-order-history>
+<hr/>
+<br/>
+<app-customer-pending-history></app-customer-pending-history>
+<hr/>
+<br/>
+<app-place-order></app-place-order>
+<hr/>
+<br/>
+<app-customer-cancel-order></app-customer-cancel-order> -->
+
+<app-customer-info></app-customer-info>
+
+<br>
+<a [routerLink]="['/dashBoard',{outlets: {'data':['placeOrder']}}]">Place Order</a> &nbsp;&nbsp;&nbsp;&nbsp;
+<a [routerLink]="['/dashBoard',{outlets: {'data':['customerPendingHistory']}}]">Customer Pending History</a> &nbsp;&nbsp;&nbsp;&nbsp;
+<a [routerLink]="['/dashBoard',{outlets: {'data':['customerOrderHistory']}}]">Customer Order History </a> &nbsp;&nbsp;&nbsp;&nbsp;
+<a [routerLink]="['/dashBoard',{outlets: {'data':['wallet']}}]">wallet Order</a> &nbsp;&nbsp;&nbsp;&nbsp;
+<a [routerLink]="['/dashBoard',{outlets: {'data':['customerCancelOrder']}}]">Customer Cancel Order</a> &nbsp;&nbsp;&nbsp;&nbsp;
+
+<hr><br/><br/>
+<router-outlet name='data'></router-outlet>

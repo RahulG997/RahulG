@@ -1,0 +1,31 @@
+<style>
+  body{
+background-image:url('http://www.example.com/yourfile.gif');
+background-position: center;
+background-size: cover;
+}
+    h1{     
+           
+        text-align: center;
+        color: rgb(189, 45, 69);
+    }
+    .center {
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  height: 20%;
+}
+</style>
+<font color="red"><h1>Hexaware Canteen Management System </h1></font>
+<br>
+<br>
+<img class="center" size = "100px" src="https://media.giphy.com/media/SasDDqOSRclNu/giphy.gif" alt="Food Image Error!">
+<br>
+<hr>
+<a  [routerLink]="['/cms-main',
+ {outlets: {'data': ['vendor-login']}}]">Vendor Login</a> &nbsp;&nbsp;&nbsp;&nbsp;
+<a  [routerLink]="['/cms-main',
+ {outlets: {'data': ['customer-login']}}]">Customer Login</a> &nbsp;&nbsp;&nbsp;&nbsp;
+ <hr/><br/><br/> 
+<router-outlet name='data'></router-outlet>

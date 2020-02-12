@@ -1,0 +1,13 @@
+<p>vendor-acceptedor-rejected-order works!</p>
+
+<form>
+    Vendor Id : 
+    <input type="number" name="vendId" [(ngModel)]="vendId" /> <br/><br/> 
+    Order Id : 
+    <input type="number" name="orderId" [(ngModel)]="orderId" /> <br/><br/> 
+    Status : 
+    <input type="text" name="status" [(ngModel)]="status" /> <br/><br/> 
+    <input type="button" value="Accept or Reject Order" (click)="acceptOrReject()" /> <br/><br/>
+    {{result}}
+
+</form>

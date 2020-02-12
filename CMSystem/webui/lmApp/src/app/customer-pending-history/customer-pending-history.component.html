@@ -1,0 +1,32 @@
+<p>customer-pending-history works!</p>
+
+<table border="3">
+        <tr>
+            <th>ORDER ID</th>
+            <th>ORDER TIME</th>
+            <th>ORDER AMOUNT</th>
+            <th>ORDER LOCATON</th>
+            <th>ORDER STATUS</th>
+            <th>ORDER QUANTITY</th>
+            <th>CUSTOMER ID</th>
+            <th>FOOD ID</th>
+            <th>VENDOR ID</th>
+            <th>WALLET TYPE</th>
+            <th>ORDER COMMENTS</th>
+            
+
+        </tr>
+        <tr *ngFor="let u of orders | async">
+            <td>{{u.ordId}}</td>
+            <td>{{u.ordTime}}</td>
+            <td>{{u.ordAmount}}</td>
+            <td>{{u.ordLocation}}</td>
+            <td>{{u.ordStatus}}</td> 
+            <td>{{u.qtyOrder}}</td> 
+            <td>{{u.cusId}}</td>
+            <td>{{u.foodId}}</td>
+            <td>{{u.venId}}</td>
+            <td>{{u.walType}}</td> 
+            <td>{{u.ordComments}}</td> 
+        </tr>
+    </table>

@@ -1,0 +1,16 @@
+Welcome Vednor : {{userName}} 
+<br/>
+<app-vendor-info></app-vendor-info> 
+<hr/>
+<br/> 
+<a  [routerLink]="['/vendor-dashboard',
+ {outlets: {'data': ['vendor']}}]">Vendor Details</a> &nbsp;&nbsp;&nbsp;&nbsp;
+ <a  [routerLink]="['/vendor-dashboard',
+ {outlets: {'data': ['pending-orders-vendor']}}]">Vendor Pending Orders</a> &nbsp;&nbsp;&nbsp;&nbsp;
+ <a  [routerLink]="['/vendor-dashboard',
+ {outlets: {'data': ['vendor-acceptedor-rejected-order']}}]">Accept or Reject Order</a> &nbsp;&nbsp;&nbsp;&nbsp;
+<!-- <app-place-order></app-place-order> -->
+<!-- <app-vendor></app-vendor> -->
+<!-- <app-wallet></app-wallet>  -->
+<hr/><br/><br/> 
+<router-outlet name='data'></router-outlet>

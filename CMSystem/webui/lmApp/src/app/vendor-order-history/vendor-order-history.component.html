@@ -1,0 +1,31 @@
+<p>vendor-order-history works!</p>
+<table border="3">
+    <tr>
+        <th>ORDER ID</th>
+        <th>ORDER TIME</th>
+        <th>ORDER AMOUNT</th>
+        <th>ORDER LOCATON</th>
+        <th>ORDER STATUS</th>
+        <th>ORDER QUANTITY</th>
+        <th>CUSTOMER ID</th>
+        <th>FOOD ID</th>
+        <th>VENDOR ID</th>
+        <th>WALLET TYPE</th>
+        <th>ORDER COMMENTS</th>
+        
+
+    </tr>
+    <tr *ngFor="let y of orders | async">
+        <td>{{y.ordId}}</td>
+        <td>{{y.ordTime}}</td>
+        <td>{{y.ordAmount}}</td>
+        <td>{{y.ordLocation}}</td>
+        <td>{{y.ordStatus}}</td> 
+        <td>{{y.qtyOrder}}</td> 
+        <td>{{y.cusId}}</td>
+        <td>{{y.foodId}}</td>
+        <td>{{y.venId}}</td>
+        <td>{{y.walType}}</td> 
+        <td>{{y.ordComments}}</td> 
+    </tr>
+</table>

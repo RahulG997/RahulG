@@ -1,0 +1,36 @@
+<p>place-order works!</p>
+
+<form name="placeOrder">
+    Customer Id : 
+    <input type="number" name="model.cusId" [(ngModel)]="model.cusId" />  <br/> <br/> <br/> 
+    Select Menu Item 
+    <select [(ngModel)]="menu.foodName" name="foodName" (change)="showAmount()">
+        <option *ngFor="let e of menuList | async" value={{e.foodId}}>
+            {{e.foodName}}
+        </option>
+    </select> <br/><br/> 
+    Price : 
+    <input type="number" name="price" [(ngModel)]="price" readonly /> <br/><br/>
+    Select Vendor  
+    <select [(ngModel)]="vendor.venName" name="venName">
+        <option *ngFor="let f of vendorList | async" value={{f.venId}}>
+            {{f.venName}}
+        </option>
+    </select> <br/><br/>
+    Order Date  :
+    <input type="date" [(ngModel)]="model.ordTime" name="ordTime" /> <br/><br/>
+   
+   
+    Quantity of Order : 
+    <input type="number" [(ngModel)]="model.qtyOrder" name="qtyOrder" /> <br/><br/> 
+    Select Wallet Type :   
+    <select [(ngModel)]="wallet.walType" name="walType">
+        <option *ngFor="let f of walletList | async" value={{f.walType}}>
+            {{f.walType}}
+        </option>
+    </select> <br/><br/>
+    Order Comments  :
+    <input type="text" [(ngModel)]="model.ordComments" name="ordComments" /> <br/><br/> 
+    <input type="button" value="Place Order" (click)=placeOrder() />   <br/><br/> 
+    {{result}}
+</form>
