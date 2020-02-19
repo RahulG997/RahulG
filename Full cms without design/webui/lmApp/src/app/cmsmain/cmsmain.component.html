@@ -1,0 +1,41 @@
+<!-- <p>Cmsmaincomponentworks</p> -->
+<body width = "100%" height = "100%" background="https://wallpaperaccess.com/full/271679.jpg"
+style = "background-repeat: no-repeat" style="background-size : 100% 100% "  >
+<style>
+    h1{        
+        text-align: center;
+        /* color: rgb(189, 45, 69); */
+    }
+    .center {
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-size: cover;
+  width: 20%;
+  height: 50%;
+}
+</style>
+<br>
+<br>
+<br>
+<font color="black"><h1><i>Welcome to Hexaraunt</i> </h1></font>
+<br>
+
+<h1>
+  <button md-button
+  [routerLink]="['/cms-main',
+  {outlets: {'login': ['vendor-login']}}]">
+  VendorLogin
+</button> 
+
+<button md-button
+[routerLink]="['/cms-main',
+{outlets: {'login': ['customer-login']}}]">
+CustomerLogin
+</button> 
+
+ <br/><br/> 
+<router-outlet name='login'></router-outlet>
+
+
+

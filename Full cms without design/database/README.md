@@ -1,0 +1,1 @@
+This directory contains the DDLs and DMLs to setup the database for your project.We have to use the directory in our development environment.

@@ -1,0 +1,51 @@
+<p>customer-pending-history</p>
+<body>
+    <input
+    type="text"
+    class="form-control"
+    name="searchString"
+    placeholder="Type to search..."
+    [(ngModel)]="searchString"
+  />
+
+<table border="3">
+        <tr>
+            <th>ORDER ID</th>
+            <th>ORDER TIME</th>
+            <th>ORDER AMOUNT</th>
+            <th>ORDER LOCATON</th>
+            <th>ORDER STATUS</th>
+            <th>ORDER QUANTITY</th>
+            <th>CUSTOMER ID</th>
+            <th>FOOD ID</th>
+            <th>VENDOR ID</th>
+            <th>WALLET TYPE</th>
+            <th>ORDER COMMENTS</th>
+            <th>CANCEL ORDER</th>
+            <th>SELECT</th>
+
+            
+
+        </tr>
+        <tr *ngFor="let u of orders | async | customerFilter :  {ordId: searchString, ordComments:searchString, walType:searchString,ordQuantity:searchString}; let i = index">
+            <td>{{u.ordId}}</td>
+            <td>{{u.ordTime}}</td>
+            <td>{{u.ordAmount}}</td>
+            <td>{{u.ordLocation}}</td>
+            <td>{{u.ordStatus}}</td> 
+            <td>{{u.qtyOrder}}</td> 
+            <td>{{u.cusId}}</td>
+            <td>{{u.foodId}}</td>
+            <td>{{u.venId}}</td>
+            <td>{{u.walType}}</td> 
+            <td>{{u.ordComments}}</td> 
+            <td><button [routerLink]="['/dashBoard',
+                {outlets: {'data': ['customerCancelOrder']}}]">Cancel Order </button> &nbsp;&nbsp;&nbsp;&nbsp; </td>
+                <td>
+                    <input type="checkbox" name="chkOrdid" (change)="checkIfAllSelected(u.ordId)">
+                    {{u.ordId}}
+                </td>
+        </tr>
+    </table>
+    </body>
+    <input type="button" value="Cancel All" (click)="cancelMe()" />

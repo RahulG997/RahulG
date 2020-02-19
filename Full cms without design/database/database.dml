@@ -1,0 +1,49 @@
+-- change the database to your team id
+use MLP173;
+
+
+
+INSERT INTO WALLET(CUS_ID,WAL_ID,WAL_AMOUNT,WAL_TYPE)
+values(1,1,2000,'PAYTM'),
+(1,2,3000,'CREDITCARD'),
+(1,3,2000,'DEBITCARD'),
+(2,4,2010,'PAYTM'),
+(3,5,5000,'CREDITCARD'),
+(4,6,3000,'DEBITCARD');
+
+INSERT INTO FOOD_ITEM(FOOD_NAME,FOOD_DETAIL,FOOD_PRICE,FOOD_STATUS,FOOD_RATING)
+values('Dosa','South-Indian',20,'AVAILABLE','*****'),
+      ('Dal-Makhni','North-Indian',80,'NOTAVAILABLE','****'),
+      ('Noodles','Chinese',80,'AVAILABLE','***'),
+      ('Honey Roast Chicken','Continental',90,'NOTAVAILABLE','****'),
+      ('Pani-Puri','Indian',89,'AVAILABLE','*****'),
+      ('Chicken-Biryani','Non-Veg',290,'NOTAVAILABLE','****');
+
+INSERT INTO VENDOR(VEN_ID, VEN_NAME, VEN_PASSWORD, VEN_EMAIL, VEN_MOBILE, VEN_ADDRESS)
+ VALUES
+('1', 'Ranjan', 'ranjan123', 'ranjan@gmail.com', '0978984567', 'SIRUSERI'),
+('2', 'Sarbani', 'sarbani123', 'sarbani@gmail.com', '9678234654', 'PADUR'),
+('3', 'Debjit', 'debjit123', 'debjit@gmail.com', '9123546789', 'KOVALAM'),
+('4', 'Sanchari', 'sanchari123', 'sanchari@gmail.com', '9078456734', 'OMR FOOD STREET'),
+('5', 'Pawan', 'pawan123', 'pawan@gmail.com', '9876567898' , 'NAVALLUR'),
+('6', 'Shriya', 'shriya123', 'shriya@gmail.com', '9878907656', 'MARINA MALL' );
+
+INSERT INTO CUSTOMER (CUS_ID,CUS_NAME,CUS_PASSWORD,CUS_EMAIL,CUS_MOBILE,CUS_DOB,CUS_ADDRESS)
+values(1,'Rahul','Rahul1997@','rahulg@hexa.com','7305662584','1998-09-16','7/4556,opaline'),
+(2,'Rohit','Rohit123','rohit556@hexa.com','9486020644','1999-02-16','7/45,Navalur'),
+(3,'Sonam','Passwordnei','sonam900@hexa.com','9854248851','1999-06-27','34,Park street'),
+(4,'Sribash','Thanos123@','sri6512@hexa.com','9854248828','1999-04-14','1/B,Kolkata'),
+(5,'Sathi','Avenger12345','avng@hexa.com','8542488571','1979-05-27','3rd,Omr foodstreet'),
+(6,'Aaditi','BlackPanther44@','aaditi@hexa.com','7543248851','2016-02-08','34,opaline');
+
+INSERT INTO ORDER_DETAIL(ORD_TIME,ORD_AMOUNT,ORD_LOCATION,ORD_STATUS,QTY_ORDER,CUS_ID,FOOD_ID,VEN_ID,WAL_TYPE)
+values
+('2020-01-01',589,'SIRUSERI','ACCEPTED',2,1,1,1,'PAYTM'),
+('2020-01-01',589,'NAVALLUR','REJECTED',4,2,2,2,'CREDITCARD'),
+('2020-01-01',589,'PADUR','PENDING',6,3,1,3,'DEBITCARD'),
+('2020-01-01',589,'KOVALAM','ACCEPTED',8,4,2,4,'PAYTM'),
+('2020-01-01',589,'OMR','CANCELLED',3,4,6,4,'DEBITCARD'),
+('2020-01-01',589,'CHENNAI','CANCELLED',5,1,2,3,'CREDITCARD'),
+('2020-01-01',589,'NAVALUR','CANCELLED',2,5,3,7,'DEBITCARD'),
+('2020-01-01',589,'OMR','PENDING',10,5,1,5,'CREDITCARD'),
+('2020-01-01',589,'MARINA MALL','REJECTED',12,6,2,6,'DEBITCARD');
