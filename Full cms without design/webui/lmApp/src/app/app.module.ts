@@ -5,6 +5,8 @@ import {HttpModule} from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
 import { DashBoardComponent } from './dash-board/dash-board.component';
 import { CustomerInfoComponent } from './customer-info/customer-info.component';
@@ -41,9 +43,10 @@ const appRoutes : Routes = [
 {path:'vendor-dashboard', component:VendorDashboardComponent,
 children :
 [
-  {path:'vendor', component:VendorComponent, outlet:'data'},
+  {path:'vendor', component:VendorInfoComponent, outlet:'data'},
   {path:'pending-orders-vendor', component: VendorPendingHistoryComponent, outlet:'data'},
-  {path:'vendor-acceptedor-rejected-order', component: VendorAcceptAndRejectComponent, outlet:'data'},
+  {path:'vendor-accepted-or-rejected-order', component: VendorAcceptAndRejectComponent, outlet:'data'},
+ {path:'vendor-order-history', component: VendorOrderHistoryComponent, outlet:'data'},
 ]
 },
 {path:'cms-main', component:CMSMainComponent,

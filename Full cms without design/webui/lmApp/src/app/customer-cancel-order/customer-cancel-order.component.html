@@ -1,13 +1,55 @@
-<p>customer-cancel-order works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Customer Cancel Order</title>
 
-<form>
-    Customer Id :
-    <input type="number" name ="cusId" [(ngModel)]="cusId"/> <br/> <br/>
-    Order Id :
-    <input type="number" name ="ordId" [(ngModel)]="ordId"/> <br/><br/>
-    Status :
-    <input type="text" name ="status" [(ngModel)]="status"/> <br/><br/>
-    <input type="button" value="Cancel Order" (click)="cancel()" /> <br/><br/>
+    <style>
+        p {
+            font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-weight: 700;
+            font-size: large;
+            font-style: italic;
+            color: black;
+        }
+        .button {
+        background-color: whitesmoke; /* Green */
+        color: black;
+        padding: 10px 24px;
+        font-size: 15px;
+        border-radius: 8px;
+        transition-duration: 0.4s;
 
-    {{result}}
-</form>
+}
+.button:hover {
+  background-color: red; /* Green */
+  color: white;
+
+}
+h2{
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    float: left;
+}
+</style>
+</head>
+
+<body>
+    <h2>CANCEL  ORDER??</h2>
+    <form>
+        <p>Customer Id :</p>
+        <input type="number" name ="cusId" [(ngModel)]="cusId"/> <br/> <br/>
+        <p>Order Id :</p>
+        <input type="number" name ="ordId" [(ngModel)]="ordId"/> <br/><br/>
+        <p>Status :</p>
+        <input type="text" name ="status" [(ngModel)]="status"/> <br/><br/>
+        <!-- <input type="button" value="Cancel Order" (click)="cancel()" /> <br/><br/> -->
+        <button class="button" value="Cancel Order" (click)="cancel()">Cancel</button> <br/><br/>
+        {{result}}
+    </form>
+</body>
+</html>
+
+

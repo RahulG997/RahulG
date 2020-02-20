@@ -1,7 +1,16 @@
-<p>place-order works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>place-order works!</p>
 
 <form name="placeOrder">
-    Customer Id : 
+    <p>Customer Id :</p> 
     <input type="number" name="model.cusId" [(ngModel)]="model.cusId" />  <br/> <br/> <br/> 
     Select Menu Item 
     <select [(ngModel)]="menu.foodName" name="foodName" (change)="showAmount()">
@@ -9,7 +18,7 @@
             {{e.foodName}}
         </option>
     </select> <br/><br/> 
-    Price : 
+    <p>Price :</p> 
     <input type="number" name="price" [(ngModel)]="price" readonly /> <br/><br/>
     Select Vendor  
     <select [(ngModel)]="vendor.venName" name="venName">
@@ -17,11 +26,11 @@
             {{f.venName}}
         </option>
     </select> <br/><br/>
-    Order Date  :
+    <p>Order Date  :</p>
     <input type="date" [(ngModel)]="model.ordTime" name="ordTime" /> <br/><br/>
    
    
-    Quantity of Order : 
+    <p>Select Wallet Type :</p>   
     <input type="number" [(ngModel)]="model.qtyOrder" name="qtyOrder" /> <br/><br/> 
     Select Wallet Type :   
     <select [(ngModel)]="wallet.walType" name="walType">
@@ -29,8 +38,14 @@
             {{f.walType}}
         </option>
     </select> <br/><br/>
-    Order Comments  :
+    <p>Order Comments  :</p>
     <input type="text" [(ngModel)]="model.ordComments" name="ordComments" /> <br/><br/> 
-    <input type="button" value="Place Order" (click)=placeOrder() />   <br/><br/> 
+    <button class="button" value="Place Order" (click)="placeOrder()">Place Order</button>  <br/><br/> 
     {{result}}
+
+
+    <!-- <button class="button" value="Cancel Order" (click)="cancel()">Cancel</button> <br/><br/>
+    {{result}} -->
 </form>
+</body>
+</html>

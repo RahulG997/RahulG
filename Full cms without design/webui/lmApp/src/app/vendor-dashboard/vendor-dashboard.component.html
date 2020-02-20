@@ -1,18 +1,150 @@
-Welcome Vednor : {{userName}} 
-<br/>
-<app-vendor-info></app-vendor-info> 
+Welcome Vendor : {{userName}} 
+<html>
+        <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                
+                </head>
+                <body>
+                    <iframe width="1350" height="415" src="https://www.youtube.com/embed/FcEVbVrNIyg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
+              
+        
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+    
+<style>
+ .button {
+  border-radius: 100px;
+  background-color: #45a049;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 18px;
+  padding: 10px;
+  height: 50px;
+  width: 250px;
+  box-shadow: 0 9px #999;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+        </style>
+<body width = "100%" 
+height = "100%"
+ background="https://www.flyingfishlab.com/wp-content/uploads/2018/01/uni-food-background.jpg"
+style = "background-repeat: no-repeat" style="background-size : 100% 100% " >
+
+
+
+
 <hr/>
-<br/> 
+
+
 <a  [routerLink]="['/vendor-dashboard',
- {outlets: {'data': ['vendor']}}]">Vendor Details</a> &nbsp;&nbsp;&nbsp;&nbsp;
+ {outlets: {'data': ['vendor']}}]">
+ <div class="tooltip"><button class="button"><span>Vendor Details </span></button>
+        <span class="tooltiptext">Click to See the Vendor Details</span>
+      </div>
+
+
+ </a>
+
  <a  [routerLink]="['/vendor-dashboard',
- {outlets: {'data': ['pending-orders-vendor']}}]">Vendor Pending Orders</a> &nbsp;&nbsp;&nbsp;&nbsp;
+ {outlets: {'data': ['pending-orders-vendor']}}]">
+ <div class="tooltip"><button class="button"><span>Pending Orders </span></button>
+    <span class="tooltiptext">Click to See the Pending Orders</span>
+  </div>
+
+ </a>                                              
+                                                   
  <a  [routerLink]="['/vendor-dashboard',
- {outlets: {'data': ['vendor-acceptedor-rejected-order']}}]">Accept or Reject Order</a> &nbsp;&nbsp;&nbsp;&nbsp;
- <a [routerLink]="['/cms-main',{outlets: {'data': ['logOut']}}]"><i><font color="red">LogOut</font></i></a> &nbsp;&nbsp;&nbsp;&nbsp; 
- <br/>
+ {outlets: {'data': ['vendor-accepted-or-rejected-order']}}]">
+ <div class="tooltip"><button class="button" style="vertical-align:middle"><span>Accept or Reject </span></button>
+    <span class="tooltiptext">Click to Accept or Reject Orders</span>
+  </div>
+
+
+</a>
+<a  [routerLink]="['/vendor-dashboard',
+{outlets: {'data': ['vendor-order-history']}}]">
+<div class="tooltip"><button class="button"><span>Order History</span></button>
+    <span class="tooltiptext">Click to See the Order History</span>
+  </div>
+
+
+</a>
+ <button class ="button" style="vertical-align:middle" md-button  [routerLink]="['/cms-main',{outlets: {'data': ['logOut']}}]"><span>LogOut</span></button> &nbsp;&nbsp;&nbsp;&nbsp;
 <!-- <app-place-order></app-place-order> -->
 <!-- <app-vendor></app-vendor> -->
 <!-- <app-wallet></app-wallet>  -->
 <hr/><br/><br/> 
+
 <router-outlet name='data'></router-outlet>
+</body>
+</body>
+</body>
+</html>

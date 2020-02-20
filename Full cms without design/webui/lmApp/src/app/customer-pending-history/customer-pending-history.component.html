@@ -39,12 +39,12 @@
             <td>{{u.venId}}</td>
             <td>{{u.walType}}</td> 
             <td>{{u.ordComments}}</td> 
-            <td><button [routerLink]="['/dashBoard',
-                {outlets: {'data': ['customerCancelOrder']}}]">Cancel Order </button> &nbsp;&nbsp;&nbsp;&nbsp; </td>
-                <td>
-                    <input type="checkbox" name="chkOrdid" (change)="checkIfAllSelected(u.ordId)">
-                    {{u.ordId}}
-                </td>
+            <td>
+                <button  class ="button" style="vertical-align:middle" md-button [routerLink]="['/dashBoard',{outlets: {'data': ['customerCancelOrder']}}]"><span>Cancel Order</span> </button> &nbsp;&nbsp;&nbsp;&nbsp; 
+            </td>
+            <td>
+                <input type="checkbox" name="chkOrdid" (change)="checkIfAllSelected(u.ordId)">{{u.ordId}}
+            </td>
         </tr>
     </table>
     </body>

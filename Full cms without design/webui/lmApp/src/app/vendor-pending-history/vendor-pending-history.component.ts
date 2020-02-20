@@ -6,7 +6,6 @@ import {Router, ActivatedRoute} from '@angular/router';
 import { Orders } from '../orders';
 import { Vendor } from '../vendor';
 
-
 @Component({
   selector: 'app-vendor-pending-history',
   templateUrl: './vendor-pending-history.component.html',

@@ -1,28 +1,95 @@
-Welcome {{userName}} 
+<!DOCTYPE html>
+<html>
+<head>
 
-<!-- <app-customer-info></app-customer-info> 
-<hr/>
-<br/> 
-<app-customer-order-history></app-customer-order-history>
-<hr/>
-<br/>
-<app-customer-pending-history></app-customer-pending-history>
-<hr/>
-<br/>
-<app-place-order></app-place-order>
-<hr/>
-<br/>
-<app-customer-cancel-order></app-customer-cancel-order> -->
+<style>
+  
+body {
+    padding-top: 10px;
+    background: url(https://www.dinelytics.com/wp-content/uploads/2019/01/food-delivery-services.jpg) no-repeat center center;
+}
 
-<app-customer-info></app-customer-info>
+.button {
+    display: inline-block;
+  border-radius: 4px;
+  background-color: seagreen;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 10px;
 
-<br>
-<a [routerLink]="['/dashBoard',{outlets: {'data':['placeOrder']}}]">Place Order</a> &nbsp;&nbsp;&nbsp;&nbsp;
-<a [routerLink]="['/dashBoard',{outlets: {'data':['customerPendingHistory']}}]">Customer Pending History</a> &nbsp;&nbsp;&nbsp;&nbsp;
-<a [routerLink]="['/dashBoard',{outlets: {'data':['customerOrderHistory']}}]">Customer Order History </a> &nbsp;&nbsp;&nbsp;&nbsp;
-<a [routerLink]="['/dashBoard',{outlets: {'data':['wallet']}}]">wallet Order</a> &nbsp;&nbsp;&nbsp;&nbsp;
-<a [routerLink]="['/dashBoard',{outlets: {'data':['customerCancelOrder']}}]">Customer Cancel Order</a> &nbsp;&nbsp;&nbsp;&nbsp;
-<a [routerLink]="['/cms-main',{outlets: {'data': ['logOut']}}]"><i><font color="red">LogOut</font></i></a> &nbsp;&nbsp;&nbsp;&nbsp; 
+}
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -50px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+#box2{
+    background-color: rgba(224, 214, 214, 0.89); 
+  /* width: 400px; */
+  border: 8px solid green;
+  padding: 10px;
+  margin: 100px;
+  text-align: right;
+}
+#box1{
+    color: black;
+    padding-bottom: 50px;
+    text-align: center;
+    font-size:5vw;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    font-style: oblique;
+    font-variant: large-caps;
+}
+</style>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+</head>
+<body>
+    <div id="box1">
+         Welcome {{userName}}
+    </div>
+
+ <div id="box2">
+    <app-customer-info></app-customer-info>
+ </div>   
+
+
+    <br>
+    <button class ="button" style="vertical-align:middle" md-button [routerLink]="['/dashBoard',{outlets: {'data':['placeOrder']}}]"><span> Place Order </span></button> &nbsp;&nbsp;&nbsp;&nbsp;
+    <button class ="button" style="vertical-align:middle" md-button [routerLink]="['/dashBoard',{outlets: {'data':['customerPendingHistory']}}]"><span>Pending History</span> </button> &nbsp;&nbsp;&nbsp;&nbsp;
+    <button class ="button" style="vertical-align:middle" md-button [routerLink]="['/dashBoard',{outlets: {'data':['customerOrderHistory']}}]"><span> Order History</span> </button> &nbsp;&nbsp;&nbsp;&nbsp;
+    <button class ="button" style="vertical-align:middle" md-button [routerLink]="['/dashBoard',{outlets: {'data':['wallet']}}]"><span>Wallet Order</span> </button> &nbsp;&nbsp;&nbsp;&nbsp;
+    <button class ="button" style="vertical-align:middle" md-button [routerLink]="['/dashBoard',{outlets: {'data':['customerCancelOrder']}}]"><span>Cancel Order</span> </button> &nbsp;&nbsp;&nbsp;&nbsp;
+    <button class ="button" style="vertical-align:middle" md-button  [routerLink]="['/cms-main',{outlets: {'data': ['logOut']}}]"><span>LogOut</span></button> &nbsp;&nbsp;&nbsp;&nbsp; 
  <br/>
-<hr><br/><br/>
-<router-outlet name='data'></router-outlet>
+    <hr><br/><br/>
+    <router-outlet name='data'></router-outlet>
+
+</body>
+</html>

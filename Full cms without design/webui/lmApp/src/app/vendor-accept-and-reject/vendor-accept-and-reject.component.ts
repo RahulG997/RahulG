@@ -17,6 +17,7 @@ export class VendorAcceptAndRejectComponent implements OnInit {
     this.vendId=parseInt(localStorage.getItem("cancelVenId"));
   }
   acceptOrReject() {
+    
     this._vendorService.acceptOrReject(this.orderId,this.vendId,this.status).subscribe(x => {
       this.result=x;
     })

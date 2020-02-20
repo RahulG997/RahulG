@@ -1,13 +1,28 @@
-<p>vendor-pending-history works!</p>
-<p>vendor-order-history works!</p>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
 <body>
-    <input
-    type="text"
-    class="form-control"
-    name="searchString"
-    placeholder="Type to search..."
-    [(ngModel)]="searchString"
-  />
+  <body width = "100%" 
+  height = "100%"
+   background="https://www.flyingfishlab.com/wp-content/uploads/2018/01/uni-food-background.jpg"
+  style = "background-repeat: no-repeat" style="background-size : 100% 100% " >
 <table border="3">
         <tr>
             <th>ORDER ID</th>
@@ -21,9 +36,8 @@
             <th>VENDOR ID</th>
             <th>WALLET TYPE</th>
             <th>ORDER COMMENTS</th>
-            <th>Accept Reject</th>
-            <th>SELECT</th>
-         
+           
+            
 
         </tr>
         <tr *ngFor="let y of orders | async | vendorFilter :  {ordId: searchString, ordComments:searchString, walType:searchString,ordQuantity:searchString}; let i = index">
@@ -52,6 +66,4 @@
 
         </tr>
     </table>
-</body>
-    <input type="button" value="Approve All" (click)="cancelMe()" />
-    <!-- {path:'vendor-acceptedor-rejected-order', component: VendorAcceptAndRejectComponent, outlet:'data'}, -->
+  

@@ -1,41 +1,126 @@
-<!-- <p>Cmsmaincomponentworks</p> -->
-<body width = "100%" height = "100%" background="https://wallpaperaccess.com/full/271679.jpg"
-style = "background-repeat: no-repeat" style="background-size : 100% 100% "  >
-<style>
-    h1{        
-        text-align: center;
-        /* color: rgb(189, 45, 69); */
-    }
-    .center {
-    display: block;
-  margin-left: auto;
-  margin-right: auto;
-  background-size: cover;
-  width: 20%;
-  height: 50%;
-}
-</style>
-<br>
-<br>
-<br>
-<font color="black"><h1><i>Welcome to Hexaraunt</i> </h1></font>
-<br>
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
 
-<h1>
-  <button md-button
-  [routerLink]="['/cms-main',
-  {outlets: {'login': ['vendor-login']}}]">
-  VendorLogin
-</button> 
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+    <a href="#home" class="w3-bar-item w3-button">Hexaraunt Catering</a>
+    <!-- Right-sided navbar links. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="#about" class="w3-bar-item w3-button">About</a>
+      <a href="#menu" class="w3-bar-item w3-button">Menu</a>
+      <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+      <!-- <a [routerLink]="['/cms-main',{outlets: {'login': ['vendor-login']}}]"  class="w3-bar-item w3-button">
+        <span> Vendor Login </span></a>
+        <a class="w3-bar-item w3-button" md-button [routerLink]="['/cms-main',{outlets: {'login': ['customer-login']}}]"><span> Customer Login </span></a> -->
+    </div>
+  </div>
+    <button type="button" class="button" style="vertical-align:middle" md-button [routerLink]="['/cms-main',{outlets: {'login': ['vendor-login']}}]">
+    <span> Vendor Login </span></button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <button type="button" class="button" style="vertical-align:middle" md-button [routerLink]="['/cms-main',{outlets: {'login': ['customer-login']}}]"><span> Customer Login </span></button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <router-outlet name='login'></router-outlet>
+</div>
+<!-- Header -->
+<header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
+  <div>
+    <img class="w3-image" src="https://health4life.info/wp-content/uploads/2019/11/dealing-with-diabetes-is-easier-with-this-advice.jpg" alt="Hamburger Catering" width="1600" height="50">
+    <h1>
+      <span>W</span>
+      <span>E</span>
+      <span>L</span>
+      <span>C</span>
+      <span>O</span>
+      <span>M</span>
+      <span>E</span>
+    <br/>
+      <span>T</span>
+      <span>O</span>
+    <br/>
+      <span>H</span>
+      <span>E</span>
+      <span>X</span>
+      <span>A</span>
+      <span>R</span>
+      <span>A</span>
+      <span>U</span>
+      <span>N</span>
+      <span>T</span>
+    </h1>
+</div>
+</header>
 
-<button md-button
-[routerLink]="['/cms-main',
-{outlets: {'login': ['customer-login']}}]">
-CustomerLogin
-</button> 
+<!-- Page content -->
+<div class="w3-content" style="max-width:1500px" >
+  <!-- About Section -->
+  <div class="w3-row w3-padding-64" id="about">
+    <div class="w3-col m6 w3-padding-large w3-hide-small">
+     <img src="https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="500" height="200">
+    </div>
 
- <br/><br/> 
-<router-outlet name='login'></router-outlet>
+    <div class="w3-col m6 w3-padding-large" >
+      <h2 class="w3-center w3-text-red">About Catering</h2><br>
+      <h5 class="w3-center">Tradition since 1889</h5>
+      <p class="w3-large">The Catering was founded in Chennai by Mrs. Kesav Catering is the business of providing food service at a remote site or a site such as a hotel, hospital, pub, aircraft, cruise ship, park, filming site or studio, entertainment site, or event venue.We only use <span class="w3-tag w3-light-grey">seasonal</span> ingredients.</p>
+      <p class="w3-large w3-hide-medium">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <!-- Menu Section -->
+  <div class="w3-row w3-padding-64" id="menu">
+    <div class="w3-col l6 w3-padding-large">
+      <h2 class="w3-center w3-text-red">Our Menu</h2><br>
+      <h4>Bread Basket</h4>
+      <p class="w3-text-grey">Assortment of fresh baked fruit breads and muffins 58.50</p><br>
+    
+      <h4>Biryani</h4>
+      <p class="w3-text-grey">. Nothing ruins your week like tasting bad biryani. 187.00</p><br>
+    
+      <h4>Dosa</h4>
+      <p class="w3-text-grey">From being crispy and wafer thin, to soft and fluffy, it has decorated our dining table since forever. 47.50</p><br>
+    
+      <h4>Scrambled eggs</h4>
+      <p class="w3-text-grey">Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p><br>
+    
+      <h4>Blueberry Pancakes</h4>
+      <p class="w3-text-grey">With syrup, butter and lots of berries 8.50</p>    
+    </div>
+    
+    <div class="w3-col l6 w3-padding-large">
+      <img src="https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="w3-round w3-image w3-opacity-min" alt="Menu" style="width:100%">
+    </div>
+  </div>
 
+  <hr>
 
+  <!-- Contact Section -->
+  <div class="w3-container w3-padding-64" id="contact">
+    <h2>Contact</h2><br>
+    <p>We offer full-service catering for any event, large or small. We understand your needs and we will cater the food to satisfy the biggerst criteria of them all, both look and taste. Do not hesitate to contact us.</p>
+    <p class="w3-text-blue-grey w3-large"><b>Siruseri, IT Park, Chennai.</b></p>
+    <p>You can also contact us by phone 00553123-2323 or email hexaraunt@gmail.com</p>
+    <!-- <form action="/action_page.php" target="_blank">
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
+      <p><input class="w3-input w3-padding-16" type="number" placeholder="How many people" required name="People"></p>
+      <p><input class="w3-input w3-padding-16" type="datetime-local" placeholder="Date and time" required name="date" value="2017-11-16T20:00"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Message \ Special requirements" required name="Message"></p>
+      <p><button class="w3-button w3-light-grey w3-section" type="submit">SEND MESSAGE</button></p>
+    </form> -->
+  </div>
+  
+<!-- End page content -->
+</div>
 
+<!-- Footer -->
+<footer class="w3-center w3-light-grey w3-padding-32">
+  <p>Powered by MLP-173</p>
+</footer>
+
+</body>
+</html>
