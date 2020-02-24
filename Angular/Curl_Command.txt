@@ -1,0 +1,60 @@
+curl -vvv http://localhost:8080/MLP173-0.0.1-SNAPSHOT/api/orderdetail/historyven/3
+
+//for placing order
+ curl -vvv -H "Accept:application/json" -X POST -H "Content-Type:application/json" -d '{"cusId":"1","foodId":"1","venId":"1","qtyOrder":"1","walType":"PAYTM","ordTime":"2020-02-11","ordComments":"SPICY"}' http://localhost:8080/MLP173-0.0.1-SNAPSHOT/api/orderdetail/placeOrder
+
+//for accepting order
+curl -vvv -H "Accept:application/json" -X POST -H "Content-Type:application/json" "http://localhost:8080/MLP173-0.0.1-SNAPSHOT/api/orderdetail/acceptOrRejectOrder/8/5/ACCEPTED"
+
+
+//for cancelling order
+curl -vvv -H "Accept:application/json" -X POST -H "Content-Type:application/json" "http://localhost:8080/MLP173-0.0.1-SNAPSHOT/api/orderdetail/cancelOrder/3/3/YES"
+
+//for getting orderdetail
+curl -vvv http://localhost:8080/MLP173-0.0.1-SNAPSHOT/api/orderdetail/
+
+
+//for getting pending customerdetails by giving cusId
+curl -vvv http://localhost:8080/MLP173-0.0.1-SNAPSHOT/api/orderdetail/pendingcus/1
+
+//for getting pending vendor details by giving venId
+curl -vvv http://localhost:8080/MLP173-0.0.1-SNAPSHOT/api/orderdetail/pendingven/1
+
+//for customer history
+curl -vvv http://localhost:8080/MLP173-0.0.1-SNAPSHOT/api/orderdetail/historycus/1
+
+//for rejecting order
+curl -vvv -H "Accept:application/json" -X POST -H "Content-Type:application/json" "http://localhost:8080/MLP173-0.0.1-SNAPSHOT/api/orderdetail/acceptOrRejectOrder/1/1/REJECTED"
+
+
+//for incorrect date of placing order
+ curl -vvv -H "Accept:application/json" -X POST -H "Content-Type:application/json" -d '{"cusId":"1","foodId":"1","venId":"1","qtyOrder":"1","walType":"PAYTM","ordTime":"2020-02-01","ordComments":"SPICY"}' http://localhost:8080/MLP173-0.0.1-SNAPSHOT/api/orderdetail/placeOrder
+
+//for cancelling order
+curl -vvv -H "Accept:application/json" -X POST -H "Content-Type:application/json" "http://localhost:8080/MLP173-0.0.1-SNAPSHOT/api/orderdetail/cancelOrder/4/2/YES"
+
+//for full vendor details
+curl -vvv http://localhost:8080/MLP173-0.0.1-SNAPSHOT/api/vendor
+
+//for getting vendor details by name
+curl -vvv http://localhost:8080/MLP173-0.0.1-SNAPSHOT/api/vendor/Ranjan
+
+//for vendor authentication
+curl -vvv http://localhost:8080/MLP173-0.0.1-SNAPSHOT/api/vendor/Ranjan/ranjan123
+
+//for getting full menu details
+curl -vvv http://localhost:8080/MLP173-0.0.1-SNAPSHOT/api/menu
+
+//for getting full customer details
+curl -vvv http://localhost:8080/MLP173-0.0.1-SNAPSHOT/api/customer
+
+
+//for getting customer details by name
+curl -vvv http://localhost:8080/MLP173-0.0.1-SNAPSHOT/api/customer/Rahul
+
+
+//for customer authentication
+curl -vvv http://localhost:8080/MLP173-0.0.1-SNAPSHOT/api/customer/Rahul/Rahul1997@
+
+//for Wallet info
+curl -vvv http://localhost:8080/MLP173-0.0.1-SNAPSHOT/api/wallet

@@ -1,0 +1,735 @@
+1) Angular written in 
+
+  Typescript.
+
+2) Angular implements application in which framework 
+
+  MVVM
+
+3) Module can be prefixed with decorator 
+
+@NgModule
+
+4) In Module, custom components and pipes  will be defined in 
+
+    declarations
+
+5) Which module required for forms and two-way binding 
+
+  FormsModule
+
+import {FormsModule} from '@angular/forms'
+
+6) If you want to call http services, which module to be used 
+
+    HttpModule, or HttpClientModule
+
+7) To give list of external services in module, then, we need
+
+   providers :[] 
+
+8)  You can define routing, by using 
+
+import {router,RouterModule} from '@angular/routing' 
+
+import {RouterModule, Routes, OutletContext} from '@angular/router';
+
+9) const appRoutes : Routes = [ 
+  {path:'menu', component:MenuComponent,
+  children :
+  [
+    {path:'first', component:FirstComponent, outlet:'data'},
+    {path:'second', component:SecondComponent, outlet:'data'},
+    {path:'calc', component:CalcComponent, outlet:'data'},
+    {path:'employ', component:EmployComponent,outlet:'data'},
+    {path:'employlist', component:EmployListComponent,
+      outlet:'data'},
+  ]
+},
+  {path:'menu', component:MenuComponent},
+  {path:'', component:LoginComponent},
+];
+
+How to redirect to error component 
+
+  {path:'**', component:LoginComponent},
+
+You can go to routing by using 
+
+ RouterModule.forRoot(appRoutes)
+
+How to place the router content result (placeholder)
+
+<router-outlet></router-outlet>
+
+How to pass parameters from one component to another component. 
+
+ name:string;
+  constructor(private route: ActivatedRoute) {
+    this.name=this.route.snapshot.params["name"];
+   }  
+  ngOnInit() {
+  }
+
+You can navigate from one component to anther component as
+
+ constructor(private router : Router) {
+   
+  }
+  third() {
+    this.router.navigate(['/Third']);
+  }
+
+What is the syntax for routerLink
+
+<a [routerLink] = "['/Second']">Second</a> 
+
+How to implement interporlation 
+
+{{ }}
+
+How to implement two-way binding 
+
+[(ngModel)] 
+
+How to give event-biding 
+
+(click) 
+
+(change) 
+
+How to give property biding 
+
+[name]="name" 
+
+What @Component decorator contains 
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+
+How to create an angular application 
+
+ng new Application_name
+
+how to create a class 
+
+ng generate class class_name 
+
+how to create a service 
+
+ng generate service service_name
+
+how to create pipe
+
+ng generate pipe pipe_name
+
+how to create a component
+
+ng g c component 
+
+Which file loads all node_modules once you run the application 
+
+package.json 
+
+Dependency Injection can be provided by 
+
+@Injectable decorator 
+
+____________________________________________
+
+map() : this operator used to return collection or individual objects by casting data from json to class object vice versa. 
+
+http.get("http://localhost:8080/ftp/api").
+map(res => res.json()).
+filter(res => res.empno >= 10).
+catch(error);
+
+
+applyLeave() : Observable<string> 
+{
+  return http.post("http://.....").
+  map(res => res.text()).
+  catch(error);
+}
+
+
+subscribe method, used to capture the values which are returned by the Observable<string>. 
+
+It contains 3 options as
+
+subscribe(success,error,completed)
+
+syntax : 
+
+.subscribe(succ_code(),err_code());
+
+
+example : 
+
+result : string;
+
+this.employ.payRoll(this.emp).subscribe(
+    success => {
+       this.result=success;
+    },   
+    err => {
+       this.result=err;
+    }
+)
+
+
+Angular Life Cycle 
+___________________
+
+1) Constructor : This is the first event fired in angular which contains default properties of class/component, and data to be stored in controls and data to be populated. 
+
+[] => property binding 
+
+() => Event Binding 
+
+[()] => Two-Way 
+
+2) ngOnChanges : Responds when angular sets the data-bound properties, it checks simple changes of object {current/previous}.
+
+3) ngOnInit : Initializes the component after angular first displays the data-bind properties and sets the directive/comopnent input properites, initializaing any services/external data. 
+
+4) ngDoCheck : Detect and act upon changes, it is called during the change of code/template of given application. 
+
+5) ngAfterConetntInit : Responds after angular checks any external content projected into angular component. 
+
+6) ngAfterContentChecked : Responds after the content binded to the component and any changes are reflected w.r.t. Binding. 
+
+7) ngAfterViewInit : Responds after angular loads the component view {parent/child views} 
+
+8) ngAfterViewChecked : Responds once the data transfer from parent view to child view successfully. 
+
+9) ngDestroy
+
+Angular Testing : 
+__________________
+
+We have 2 types of testing as 
+
+1) Unit testing 
+
+2) E2E testing 
+
+______________________________________________________________________
+
+ng g c First 
+ng g c Second
+ng g c Third
+ng g c Menu
+
+ng generate service Demo
+
+@Injectable() decorator is needed when a service needs dependencies injected to its constructor. It is optional when a service does not need dependencies injected into it, but its common practice to use @Injectable() decorator for all services. 
+
+It is defined at class level. 
+
+In http services, we call the existing services which are implemted in another programming language, and invoke them by using Angular. 
+
+Http Service returns Promises which contains 2 values as 
+
+1) resolve : Comes when the service is successfully 		served. 
+
+2) reject : Comes when the service access fails 
+
+Drawbacks with Promises are, they will return only one value at a time, but during service requests data to be accessed asynchronously, then we use Observables instead of Promises. 
+
+Assume, we have to return list of users from the given service, 
+
+export class Users
+{
+   userName : string;
+   passWord : string;
+}
+
+To store the list of users returned by the service, then we need the help of Observable array. 
+
+Observable<User[]> 
+
+Assume, 
+
+https://jsonplaceholder.typicode.com/users 
+
+To call the http Serive initialize the object of http in the constructor first. 
+
+  constructor(private http : Http) {
+  }
+
+  getUsers() : Observable<User[]> 
+  {
+    return this.http.get("
+https://jsonplaceholder.typicode.com/users ").
+    toPromise().then(
+res => res.json() as User[]).catch(errorHandler);
+    
+  }
+
+ng g c UserShow
+
+-----------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
+map() : this operator used to return collection or individual objects by casting data from json to class object vice versa. 
+
+getEmployee(): Observable<Employee[]> {
+http.get("http://localhost:8080/ftp/api").
+map(res => res.json()).
+filter(res => res.empno >= 10).
+catch(error);
+}
+
+applyLeave() : Observable<string> 
+{
+  return http.post("http://.....").
+  map(res => res.text()).
+  catch(error);
+}
+
+
+subscribe method, used to capture the values which are returned by the Observable<string>. 
+
+It contains 3 options as
+
+subscribe(success,error,completed)
+
+syntax : 
+
+.subscribe(succ_code(),err_code());
+
+
+example : 
+
+result : string;
+
+this.employ.payRoll(this.emp).subscribe(
+    success => {
+       this.result=success;
+    },   
+    err => {
+       this.result=err;
+    }
+)
+
+
+Angular Life Cycle 
+___________________
+
+1) Constructor : This is the first event fired in angular which contains default properties of class/component, and data to be stored in controls and data to be populated. 
+
+[] => property binding 
+
+() => Event Binding 
+
+[()] => Two-Way 
+
+[(ngModel)]  
+
+2) ngOnChanges : Responds when angular sets the data-bound properties, it checks simple changes of object {current/previous}.
+
+3) ngOnInit : Initializes the component after angular first displays the data-bind properties and sets the directive/comopnent input properites, initializaing any services/external data. 
+
+4) ngDoCheck : Detect and act upon changes, it is called during the change of code/template of given application. 
+
+5) ngAfterConetntInit : Responds after angular checks any external content projected into angular component. 
+
+6) ngAfterContentChecked : Responds after the content binded to the component and any changes are reflected w.r.t. Binding. 
+
+7) ngAfterViewInit : Responds after angular loads the component view {parent/child views} 
+
+8) ngAfterViewChecked : Responds once the data transfer from parent view to child view successfully. 
+
+9) ngDestroy
+
+Angular Testing : 
+__________________
+
+We have 2 types of testing as 
+
+1) Unit testing 
+
+2) E2E testing 
+
+______________________________________________________________________
+
+ng g c First 
+ng g c Second
+ng g c Third
+ng g c Menu
+
+ng generate service Demo
+
+@Injectable() decorator is needed when a service needs dependencies injected to its constructor. It is optional when a service does not need dependencies injected into it, but its common practice to use @Injectable() decorator for all services. 
+
+It is defined at class level. 
+
+In http services, we call the existing services which are implemted in another programming language, and invoke them by using Angular. 
+
+Http Service returns Promises which contains 2 values as 
+
+1) resolve : Comes when the service is successfully 		served. 
+
+2) reject : Comes when the service access fails 
+
+Drawbacks with Promises are, they will return only one value at a time, but during service requests data to be accessed asynchronously, then we use Observables instead of Promises. 
+
+Assume, we have to return list of users from the given service, 
+
+export class Users
+{
+   userName : string;
+   passWord : string;
+}
+
+To store the list of users returned by the service, then we need the help of Observable array. 
+
+Observable<User[]> 
+
+Assume, 
+
+https://jsonplaceholder.typicode.com/users 
+
+To call the http Serive initialize the object of http in the constructor first. 
+
+  constructor(private http : Http) {
+  }
+
+  getUsers() : Observable<User[]> 
+  {
+    return this.http.get("
+https://jsonplaceholder.typicode.com/users ").
+    toPromise().then(
+res => res.json() as User[]).catch(errorHandler);
+    
+  }
+
+ng g c UserShow
+
+
+
+constructor (private employeeService: EmployeeService,private route : Router, private router : ActivatedRoute) {
+    this.empId=this.router.snapshot.params['empId'];
+  }
+   
+
+  
+ 
+  ngOnInit() {
+   this.empDetails();
+
+
+  }
+  
+  ];
+
+export const appRoutes : Routes = [
+    { path : '', redirectTo : 'home', pathMatch: 'full'},
+    { path : 'login', component : LoginComponent},
+    { path : 'myleave/:empId', component : MyleaveComponent},
+    { path : 'home', component : HomeComponent},
+    { path : 'my-details/:empId', component : MyDetailsComponent},
+    { path: 'approvedeny', component: ApproveDenyComponent },
+    { path: 'dashboard', component: DashboardComponent },
+    { path:'showpending', component:ListpendingComponent},
+    { path:'manager-details', component:ManagerDetailsComponent},
+    { path:'apply', component:ApplyleaveComponent},
+];
+  
+   this.router.navigate(['/apply']);
+  
+        <li><a [routerLink] = "['/Product']">Product</a></li>
+      <li><a [routerLink] = "['/Inventory']">Inventory</a></li>
+
+RouterModule.forRoot(appRoutes)
+
+Components are the heart for angular environment, which allows you to write actual code. 
+
+You can create a component by using 
+
+ng g c Comp_name 
+
+Then it creates 4 files 
+
+comp.ts 
+comp.html
+comp.spec.ts 
+comp.css 
+
+Template is the view of the application, 
+
+Metadata provides the additional information about the component. 
+
+Angular Module organizes the given application, means 
+
+what ur application contains will be defined in the module. 
+
+Each application contains one root module known as 
+
+app.module.ts 
+
+It contains default module as 
+
+@NgModule
+
+@NgModule({
+	
+})
+
+app.module contains 4 
+
+1) declarations
+
+contains which custom components are available in the project. 
+
+declarations: [
+    AppComponent,
+    MyDetailsComponent,
+    ApplyleaveComponent,
+    LoginComponent,
+    ManagerDetailsComponent,
+    PendingComponent,
+    DashboardComponent,
+    ShowHistoryComponent,
+    HomeComponent,
+    AppdenyComponent
+  ],
+
+2) imports : Which system directive modules to be loaded. 
+
+Ex : Default it contains BrowserModule as the application needs to run in the browser. 
+
+When you use forms or two-way binding [(ngModel)] then 
+FormsModule we have to use. 
+
+When you use Serivces, then we have to use HttpModule, 
+
+When you use Routing, Then we have to use RouterModule 
+
+imports: [
+    BrowserModule,
+    HttpModule,
+    FormsModule,
+    RouterModule.forRoot(rootRouterConfig)
+  ]
+
+3) providers : Contains any external http services added to the given project. 
+
+  providers: [ EmployeeService, SharedService, SharedService1],
+
+4) bootstrap : Contains the default component to the loaded when we start the project. 
+
+  bootstrap: [AppComponent], you can give more than one component in bootstrap. Which finds first that would be executed. 
+  
+   bootstrap: [AppComponent,EmployComponent,LeaveComponent]
+ 
+In component.ts file a component will be identified as 
+
+@Component({
+
+It contains 
+	selector : Based on selector name we can render data. 
+	
+	templateUrl : Contains the corresponding html file where the view is there. We can specify template also instead of templateUrl
+	
+	but, template contains selector name, where templateUrl contains HTML file name. 
+	
+	styleUrls : Contains the CSS file. 
+	
+	providers : Contains any external services 
+
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LeaveDetails } from './../leaveDetails';
+import { Employee } from './../employee';
+import { EmployeeService } from './../employee.service';
+import { SharedService } from './../services.service';
+@Component({
+  selector: 'app-show-history',
+  templateUrl: './show-history.component.html',
+  styleUrls: ['./show-history.component.css'],
+  providers: [ EmployeeService ]
+})
+export class ShowHistoryComponent implements OnInit {
+  title = 'My Leave Applications Section';
+  changeVar:boolean;
+ 
+  constructor(private router: Router, private employeeService: EmployeeService, private shared: SharedService) {
+    this.shared=shared;
+   }
+
+   leaveDetails:LeaveDetails[];
+   listLeaveDetails(): void {
+     this.employeeService.listLeaveDetails().then(leaveDetails => {
+       console.log('getLeaveDetails promise resolved'+ leaveDetails.length);
+       this.leaveDetails = leaveDetails;
+   }
+  );
+}
+   
+  ngOnInit() {
+  
+  this.listLeaveDetails();
+  }
+  newApp() {
+    this.shared.change(this.changeVar);
+  //  this.router.navigate(['/apply']);
+  }
+}
+
+ng generate class class_name 
+
+ng generate service service_name 
+
+DataBinding :
+______________ 
+
+THere are 4 types of bindings 
+
+1) interpolation  : used to display data as one-way binding 
+
+{{name}}
+
+{{mgrId}} 
+
+2) property binding : Used to bind the properties. 
+
+Ex : 
+
+[] -> Property Binding
+
+<input type="text" [name]="empno" /> 
+
+<input type="text" [name]="basic" /> 
+
+3) event binding : 
+
+Used to bind events. 
+
+() -> used for events. 
+
+<input type="button" (click)="show()" /> 
+
+<select (change)="show()">
+   <option>sadf</option>
+</select>
+
+4) two-way binding : Used to get values from ts to html vice versa 
+
+[(ngModel)] 
+
+<p>
+  employ-insert works!
+</p>
+<body>
+  <h1>APPLY LEAVE</h1>
+
+  <div style="text-align:center">
+      <form #userForm="ngForm" (ngSubmit)="doApply(userForm)">
+          <div class = "form-group">
+              <label for = "empno" style="margin-right:10%">Employ No</label>
+              <input type = "number" class = "form-control" id = "empno" required="required"
+               [(ngModel)] = "model.empno" name = "empno" #empno="ngModel">
+              
+          </div><br>
+   <!--<td>Start Date:</td> <td> <input type='date' [(ngModel)]="leaveStartDate"> </td></tr>-->
+   <div class = "form-control">
+      <label for = "name" style="margin-right:10%">Name of Employ</label>
+      <input type = "text" class = "form-control" id = "name" required="required"
+       [(ngModel)] = "model.name" name = "name" #name="ngModel">
+     
+  </div><br>
+   <!--<tr><td>End Date:</td>  <td> <input type='date' [(ngModel)]="leavedetails.leaveEndDate"> </td></tr>-->
+   
+
+ <!-- <tr><td>Number of days:</td>  <td>  <input type="number" [(ngModel)]="leavedetails.leaveNoOfDays"></td></tr>-->
+   <div class = "form-group">
+      <label for = "dept" style="margin-right:5%">Department</label>
+      <input type = "text" class = "form-control" id = "dept" required="required" 
+       [(ngModel)] = "model.dept" name = "dept" #dept="ngModel" >
+     
+  </div><br>
+
+   <!--<tr><td>Leave type: </td>  <td><select name="leaveType"> <option value = "Earned Leave">Earned</option><option value = "Sick Leave">Sick</option></select></td></tr>-->
+   <!--<tr><td>Leave Reason:</td>  <td> <input type="text" [(ngModel)]="leavedetails.leaveReason"></td></tr>-->
+   <div class = "form-group">
+      <label for = "desig" style="margin-right:18%">Designation  </label>
+      <input type = "text" class = "form-control" id = "desig" required="required" 
+      [(ngModel)] = "model.desig" name = "desig" #desig="ngModel" >
+      </div><br>
+
+   <div class = "form-group">
+      <label for = "basic" style="margin-right:5.2%" >Salary</label>
+      <input type = "number" class = "form-control" id = "basic" required="required"
+       [(ngModel)] = "model.basic" name = "basic">
+  </div><br>     
+  
+  
+
+
+  <button>Apply</button>
+  <!-- <button type="button"  (click) = "apply()">Apply </button> -->
+  
+ 
+  <button type="button"  (click) = "cancel()">Cancel </button>
+
+
+
+  </form>
+
+  </div>
+  <div style="text-align:center">
+      {{this.message}}
+  </div>
+    </body>
+    
+
+<div *ngIf="x==10;show; else notShow">
+</div>
+<ng-template show>
+  <p>
+    Show this only if "show" is not true
+  </p>
+</ng-template>
+<ng-template #notShow>
+  <p>
+    Show this only if "show" is not true
+  </p>
+</ng-template>
+
+ In Angular 4, the following four statuses are commonly used by forms:
+
+valid – state of the validity of all form controls, true if all controls are valid
+
+invalid – inverse of valid; true if some control is invalid
+
+pristine – gives a status about the “cleanness” of the form; true if no control was modified
+
+dirty – inverse of pristine; true if some control was modified
+
+import { NG_VALIDATORS, Validator, FormControl, ValidationErrors } from '@angular/forms';
+
+<input type="text" [(ngModel)]="name" value="Hexaware" /> 
+
+By default textbox value is "Hexaware"
+
+If you change the value, then it comes under dirty, because the value got changed. 
+
+If you dont change the value, then it comes under pristine, because the value is not changed. 
+
+*** If any question comes as cleaniness of the form, please choose the option as "pristine" *** 
+
+
+
+
+
+
+
+  
+  
+
+
+
