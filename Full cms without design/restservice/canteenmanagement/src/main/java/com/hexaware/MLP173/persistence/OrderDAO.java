@@ -3,7 +3,12 @@ package com.hexaware.MLP173.persistence;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
+
+import java.util.Date;
 import java.util.List;
+
+import com.hexaware.MLP173.model.Customer;
+import com.hexaware.MLP173.model.Freegift;
 import com.hexaware.MLP173.model.Menu;
 import com.hexaware.MLP173.model.OrderDetail;
 import com.hexaware.MLP173.model.Wallet;
@@ -31,6 +36,33 @@ public interface OrderDAO {
   @SqlQuery("Select * from ORDER_DETAIL WHERE ORDER_ID=:ordId")
     @Mapper(OrderMapper.class)
     OrderDetail findByOrderId(@Bind("ordId") int ordId);
+
+    @SqlQuery("Select * from CUSTOMER WHERE CUS_ID=:cusId")
+    @Mapper(CustomerMapper.class)
+    Customer findByCusId(@Bind("cusId") int cusId);
+
+   /**
+     * @param ordId for Order details.
+     * @return the all the Order single record.
+     */
+  @SqlQuery("select count(*),Sum(ORD_AMOUNT) from ORDER_DETAIL where CUS_ID=:cusId AND ORD_TIME=:ordTime having Sum(ORD_AMOUNT)>500")
+    int cusOrder(@Bind("cusId") int cusId,@Bind("ordTime") Date ordTime);
+    
+   /**
+     * @param ordId for Order details.
+     * @return the all the Order single record.
+     */
+  @SqlQuery("select  count(*) from freegift where cusId=:cusId")
+    int cusCount(@Bind("cusId") int cusId);
+    
+  /**
+    * @param orderdetail to initialize order.
+     * @return the showPrice.
+     */
+  @SqlUpdate("INSERT INTO Freegift (cusId,venId,giftStatus)  VALUES (:cusId, :venId, :status)")
+@GetGeneratedKeys
+int showGift(@BindBean Freegift orderdetail);
+
    /**
      * @param foodId for menu details.
      * @return the all the Menu record.

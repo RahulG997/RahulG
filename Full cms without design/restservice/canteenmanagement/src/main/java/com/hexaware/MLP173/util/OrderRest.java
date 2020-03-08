@@ -8,7 +8,11 @@ import javax.ws.rs.core.MediaType;
 import com.hexaware.MLP173.model.OrderDetail;
 import com.hexaware.MLP173.factory.OrderFactory;
 import javax.ws.rs.PathParam;
+
+import java.text.ParseException;
+
 import javax.ws.rs.Consumes;
+
 /**
  * This class provides a REST interface for the employee entity.
  */
@@ -16,6 +20,7 @@ import javax.ws.rs.Consumes;
 public class OrderRest {
   /**
    * Returns Order details.
+   * 
    * @return the Order details
    */
   @GET
@@ -24,61 +29,70 @@ public class OrderRest {
     final OrderDetail[] orderdetail = OrderFactory.showOrderDetail();
     return orderdetail;
   }
+
   /**
    * Returns order details.
+   * 
    * @return the order details
    * @param cusId for pending customers.
    */
   @GET
   @Path("/pendingcus/{cusId}")
   @Produces(MediaType.APPLICATION_JSON)
-  public final OrderDetail[]  orderdetailListbyId(@PathParam("cusId") final int cusId) {
+  public final OrderDetail[] orderdetailListbyId(@PathParam("cusId") final int cusId) {
     final OrderDetail[] orderdetail = OrderFactory.showpendingCustomeOrderDetails(cusId);
     if (orderdetail == null) {
       throw new NotFoundException("No such Customer ID: " + cusId);
     }
     return orderdetail;
   }
+
   /**
    * Returns Menu details.
+   * 
    * @param venId to get name.
    * @return the menu details
    */
   @GET
   @Path("/pendingven/{venId}")
   @Produces(MediaType.APPLICATION_JSON)
-  public final OrderDetail[] orderdetailTestById(@PathParam("venId")final int venId) {
+  public final OrderDetail[] orderdetailTestById(@PathParam("venId") final int venId) {
     final OrderDetail[] orderdetail = OrderFactory.showpendingVendorOrderDetails(venId);
     if (orderdetail == null) {
       throw new NotFoundException("No such Vendor ID: " + venId);
     }
     return orderdetail;
   }
+
   /**
    * Returns Order details.
+   * 
    * @return the Order details.
    * @param cusId for history of customer.
    */
   @GET
   @Path("/historycus/{id}")
   @Produces(MediaType.APPLICATION_JSON)
-   public final OrderDetail[] orderdetailTest1ById(@PathParam("id") final int cusId) {
+  public final OrderDetail[] orderdetailTest1ById(@PathParam("id") final int cusId) {
     final OrderDetail[] orderdetail = OrderFactory.showCustomerHistory(cusId);
     if (orderdetail == null) {
       throw new NotFoundException("No such customer ID: " + cusId);
     }
     return orderdetail;
   }
+
   /**
    * Returns Order details.
+   * 
    * @return the Order details.
    * @param orderdetail for place order object.
+   * @throws ParseException
    */
   @POST
   @Path("/placeOrder")
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)
-   public final String placeOrder(final OrderDetail orderdetail) {
+  public final String placeOrder(final OrderDetail orderdetail) throws ParseException {
     String result = OrderFactory.placeOrder(orderdetail);
     return result;
   }

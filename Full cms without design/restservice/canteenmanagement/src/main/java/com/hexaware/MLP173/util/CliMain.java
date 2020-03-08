@@ -1,5 +1,6 @@
 package com.hexaware.MLP173.util;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 import java.io.Console;
@@ -22,6 +23,7 @@ import com.hexaware.MLP173.model.Wallet;
  */
 class CliMain {
   private Scanner option = new Scanner(System.in, "UTF-8");
+  
 /**
  * mainMenu method  used to display the option we had in the application.
  * UTF-8 unified transformation format(it will take 8 bit at a tym)
@@ -107,8 +109,8 @@ class CliMain {
     }
     if (count == 1) {
       Customer customer = CustomerFactory.findByCustomerName(username);
-      int custId = customer.getCusId();
-      Wallet[] wallet = WalletFactory.showWallet(custId);
+      int cusId = customer.getCusId();
+      Wallet[] wallet = WalletFactory.showWallet(cusId);
       System.out.println("----------------------------------------------------"
               + "----------------------------------------------------------------------");
       System.out.printf("%-15s %-15s %-15s %-15s", "CUS_ID", "WAL_ID", "WAL_AMOUNT", "WAL_TYPE");
@@ -155,17 +157,20 @@ class CliMain {
     status = option.next();
     System.out.println(OrderFactory.acceptOrRejectOrder(ordId, vendorId, status));
   }
-  private void placeOrder() {
+
+
+  private void placeOrder() throws ParseException {
     OrderDetail orderdetail = new OrderDetail();
     System.out.println("Enter Customer ID ");
-    orderdetail.setCusId(option.nextInt());
+    int cusId = option.nextInt();
+    orderdetail.setCusId(cusId);
     System.out.println("Enter Menu Id  ");
     orderdetail.setFoodId(option.nextInt());
     System.out.println("Enter Vendor Id ");
     orderdetail.setVenId(option.nextInt());
     System.out.println("Enter Quantity ");
     orderdetail.setQtyOrder(option.nextInt());
-    System.out.println("Enter Vallet Source ");
+    System.out.println("Enter Wallet Source ");
     String ws = option.next();
     orderdetail.setWalType(ws);
     System.out.println("Enter Order Date (yyyy-MM-dd)  ");
@@ -177,6 +182,44 @@ class CliMain {
     } catch (ParseException e) {
       System.out.println(e);
     }
+    String oeStartDateStr = "-03-08";
+    String oeEndDateStr = "-03-18";
+
+    Calendar cal = Calendar.getInstance();
+    Integer year = cal.get(Calendar.YEAR);
+
+    oeStartDateStr = year.toString().concat(oeStartDateStr);
+    oeEndDateStr = year.toString().concat(oeEndDateStr);
+
+    Date startDate = sdf.parse(oeStartDateStr);
+    Date endDate = sdf.parse(oeEndDateStr);
+
+    Date d = sdf.parse(ord);
+        
+        String currDt = sdf.format(d);
+         int count1=0;
+      int count2=0;
+
+  Customer customer = OrderFactory.findbyCusId(cusId);
+  
+      count1 = OrderFactory.showCusorder(customer.getCusId(),d);
+      count2 = OrderFactory.showCuscount(customer.getCusId());
+
+      if(d.after(startDate) && d.before(endDate) || currDt.equals(sdf.format(startDate)) ||currDt.equals(sdf.format(endDate)))
+     {
+      if(count1>=2 && count2==0)
+      {
+        System.out.println(d+" is between 8th march to 18th march...Free Gift Applicable");
+      }
+      else if(count2==1){
+        System.out.println("Offer already used!");
+      }
+        else{
+          System.out.println("You are not eligible for getting gift place order worth 500 today !");
+        }
+            
+     }
+
     System.out.println("Enter Order Comments ");
     orderdetail.setOrdComments(option.next());
     System.out.println(OrderFactory.placeOrder(orderdetail));

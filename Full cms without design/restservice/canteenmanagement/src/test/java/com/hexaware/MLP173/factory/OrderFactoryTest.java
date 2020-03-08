@@ -250,7 +250,7 @@ public class OrderFactoryTest {
         }
       };
     String result1 = OrderFactory.placeOrder(order1);
-    assertEquals(result1, "Order Placed Successfully...");
+    assertEquals(result1, "To get gift place order worth 500 today...Order Placed Successfully... !");
     String result2 = OrderFactory.placeOrder(order2);
     assertEquals(result2, "Insufficient Funds...");
     String result3 = OrderFactory.placeOrder(order3);
